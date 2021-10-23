@@ -56,9 +56,9 @@ for i in range(0, 2000):
 
     # Adding the Opening and the Location - Change the opening location based on type of situation for realism.
     if(sit >= 3 and sit < 6):
-        complaint += selected_opening_illegal[rd.randrange(0, len(selected_opening_illegal), 1)].split('\n')[0].replace("$", animal_type[at])
+        complaint += selected_opening_illegal[rd.randrange(0, len(selected_opening_illegal), 1)].split('\n')[0]
     else:
-        complaint += selected_opening_normal[rd.randrange(0, len(selected_opening_normal), 1)].split('\n')[0].replace("$", animal_type[at])
+        complaint += selected_opening_normal[rd.randrange(0, len(selected_opening_normal), 1)].split('\n')[0]
     
     complaint += selected_location[rd.randrange(0, len(selected_location), 1)].split('\n')[0]
 
@@ -78,6 +78,9 @@ for i in range(0, 2000):
         else:
             complaint += selected_extra[rd.randrange(0, len(selected_extra), 1)].split('\n')[0]
 
+    # Change the $'s to animal names
+    complaint.replace("$", animal_type[at])
+    
     # Add the row to the sheet
     sheet.write(row, 0, str(i))
     sheet.write(row, 1, complaint)
