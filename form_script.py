@@ -32,11 +32,25 @@ selected_opening_illegal = illegal_opening.readlines()
 selected_location = location.readlines()
 selected_extra = extra_info.readlines()
 
-for i in range(0, 10000):
+animal_dict = dict()
+situation_dict = dict()
+
+for i in range(0, 20000):
     complaint = ""
-    
     # Randomly Select all the different Variables
-    at = rd.randrange(0, len(animal_type), 1)
+    while(True):
+        at = rd.randrange(0, len(animal_type), 1)
+        if(animal_type[at] in animal_dict):
+            if(animal_dict[animal_type[at]] > 2000):
+                continue
+            else:
+                animal_dict[animal_type[at]] += 1
+                break
+        
+        else:
+            animal_dict[animal_type[at]] = 1
+            break
+    
     extra = rd.randrange(0,3)
     pet = True if at <= 4 else False
     an_info = None
@@ -44,8 +58,19 @@ for i in range(0, 10000):
     if(pet):
         # Select Pet Situation
         sit = -1
-        while(sit == 5):
+        while(True):
             sit = rd.randrange(0, len(situation), 1)
+            if(sit == 5):
+                continue
+            elif(situation[sit] in situation_dict):
+                if(situation_dict[situation[sit]] > 2000):
+                    continue
+                else:
+                    situation_dict[situation[sit]] += 1
+                    break
+            else:
+                situation_dict[situation[sit]] = 1
+                break
     else:
         # Select Wild / Cattle / Pest Situation
         sit = rd.randrange(2, len(situation), 1)
