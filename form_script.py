@@ -32,7 +32,7 @@ selected_opening_illegal = illegal_opening.readlines()
 selected_location = location.readlines()
 selected_extra = extra_info.readlines()
 
-for i in range(0, 2000):
+for i in range(0, 10000):
     complaint = ""
     
     # Randomly Select all the different Variables
@@ -79,7 +79,7 @@ for i in range(0, 2000):
             complaint += selected_extra[rd.randrange(0, len(selected_extra), 1)].split('\n')[0]
 
     # Change the $'s to animal names
-    complaint.replace("$", animal_type[at])
+    complaint = complaint.replace("$", animal_type[at])
     
     # Add the row to the sheet
     sheet.write(row, 0, str(i))
