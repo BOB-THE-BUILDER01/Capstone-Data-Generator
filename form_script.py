@@ -35,13 +35,13 @@ selected_extra = extra_info.readlines()
 animal_dict = dict()
 situation_dict = dict()
 
-for i in range(0, 20000):
+for i in range(0, 100000):
     complaint = ""
     # Randomly Select all the different Variables
     while(True):
         at = rd.randrange(0, len(animal_type), 1)
         if(animal_type[at] in animal_dict):
-            if(animal_dict[animal_type[at]] > 2000):
+            if(animal_dict[animal_type[at]] > 4000):
                 continue
             else:
                 animal_dict[animal_type[at]] += 1
@@ -63,7 +63,7 @@ for i in range(0, 20000):
             if(sit == 5):
                 continue
             elif(situation[sit] in situation_dict):
-                if(situation_dict[situation[sit]] > 2000):
+                if(situation_dict[situation[sit]] > 4000):
                     continue
                 else:
                     situation_dict[situation[sit]] += 1
